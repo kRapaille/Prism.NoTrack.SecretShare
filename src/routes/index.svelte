@@ -7,52 +7,53 @@
 	import Paper, { Title, Subtitle, Content } from '@smui/paper';
 	import Fab from '@smui/fab';
 	import { Icon, Label } from '@smui/common';
-	import type { LongUrl, ShortUrl } from '$lib/types';
+	import type { SecretContent, PlainContent } from '$lib/types';
 
 	let value = '';
 	let shortened = '';
 
-	function doShortener() {
-		const longUrl: LongUrl = {
-			url: value
+	function doHide() {
+		const plainContent: PlainContent = {
+			text: value
 		};
 
-		fetch('/api/shortener', {
+		fetch('/api/hide', {
 			method: 'POST',
-			body: JSON.stringify(longUrl),
+			body: JSON.stringify(plainContent),
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8'
 			}
 		}).then((response) => {
-			response.json().then((shortUrl: ShortUrl) => {
-				shortened = shortUrl.url;
-			});
+			console.log(response);
 		});
 	}
 
 	function handleKeyDown(event: any) {
 		if (event.key === 'Enter') {
-			doShortener();
+			doHide();
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>Shorten your URL - NoTrack : For a private, ad and tracking free web</title>
+	<title>Secret Share - NoTrack : For a private, ad and tracking free web</title>
 </svelte:head>
 
+<div class="solo-container">
+	<h2>Hide your secret !</h2>
+</div>
 <div class="solo-input-container solo-container">
 	<Paper class="solo-paper" elevation={6}>
-		<Icon class="material-icons">link</Icon>
+		<Icon class="material-icons">text_snippet</Icon>
 		<Input
 			bind:value
 			on:keydown={handleKeyDown}
-			placeholder="Paste your long URL here"
+			placeholder="Enter your secret information here !"
 			class="solo-input"
 		/>
 	</Paper>
-	<Fab on:click={doShortener} disabled={value === ''} color="primary" mini class="solo-fab">
-		<Icon class="material-icons">arrow_forward</Icon>
+	<Fab on:click={doHide} disabled={value === ''} color="primary" mini class="solo-fab">
+		<Icon class="material-icons">visibility_off</Icon>
 	</Fab>
 </div>
 
