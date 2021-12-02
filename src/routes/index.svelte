@@ -8,6 +8,11 @@
 	import Fab from '@smui/fab';
 	import { Icon, Label } from '@smui/common';
 	import type { SecretContent, PlainContent } from '$lib/types';
+	import Textfield from '@smui/textfield';
+	import HelperText from '@smui/textfield/helper-text';
+	import Tab from '@smui/tab';
+	import TabBar from '@smui/tab-bar';
+	import Button from '@smui/button';
 
 	let value = '';
 	let shortened = '';
@@ -42,6 +47,13 @@
 <div class="solo-container">
 	<h2>Hide your secret !</h2>
 </div>
+
+<div class="margins">
+	<Textfield style="width: 100%;" helperLine$style="width: 100%;" bind:value label="Label">
+		<HelperText slot="helper">Helper Text</HelperText>
+	</Textfield>
+</div>
+
 <div class="solo-input-container solo-container">
 	<Paper class="solo-paper" elevation={6}>
 		<Icon class="material-icons">text_snippet</Icon>
@@ -80,14 +92,16 @@
 			I hope you will use it with respect of the work being done.
 
 			<Subtitle class="paper-subtitle">What is the <u>Secret Share</u> ?</Subtitle>
-			
+
 			TODO
-			
+
 			<Subtitle class="paper-subtitle">What is tracked ?</Subtitle>
-			Short answer is nothing. The long answer is, of course there are some technical logs on the servers, but without any user informations.<br />
+			Short answer is nothing. The long answer is, of course there are some technical logs on the servers,
+			but without any user informations.<br />
 			Also, the number of use of each link is stored in database.<br />
 			Nothing else :)<br />
-			If you want to be sure of that, you can check by yourself on <a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
+			If you want to be sure of that, you can check by yourself on
+			<a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
 
 			<Subtitle class="paper-subtitle">Free to use, but not to run</Subtitle>
 			Of course, these tools are not free to run. I make these because I really like the
@@ -128,11 +142,15 @@
 
 			<Subtitle class="paper-subtitle">Another way to support ?</Subtitle>
 			Yes, of course ! This is an open source project, you can fork it and add the feature you want.
-			This is stored in GitHub : <a href="https://github.com/prism-be/Prism.NoTrack.SecretShare">Prism.NoTrack.SecretShare</a>.
+			This is stored in GitHub :
+			<a href="https://github.com/prism-be/Prism.NoTrack.SecretShare">Prism.NoTrack.SecretShare</a>.
 
 			<Subtitle class="paper-subtitle">Bugs ? Support ?</Subtitle>
-			This project is made on personal time, with the use of beta version of <a href="https://kit.svelte.dev/">SvelteKit</a>. there can be bugs, I can take time to fix them. <br />
-			So, you use this tool as is, without any guarantee. You can always open an issue in the GitHub below.
+			This project is made on personal time, with the use of beta version of
+			<a href="https://kit.svelte.dev/">SvelteKit</a>. there can be bugs, I can take time to fix
+			them. <br />
+			So, you use this tool as is, without any guarantee. You can always open an issue in the GitHub
+			below.
 		</Content>
 	</Paper>
 </div>
@@ -142,8 +160,7 @@
 		text-align: center;
 	}
 
-	* :global(.action-button-fab)
-	{
+	* :global(.action-button-fab) {
 		width: 220px;
 	}
 
